@@ -1,0 +1,25 @@
+arrow-back
+ <Icon name="arrow-back
+" size={30} color="#900" />;
+
+<Icon name="search 
+" size={30} color="#900" />
+
+<Icon name=" cart-outline
+
+" size={30} color="#900" />;
+
+<Icon name="heart-outline
+
+" size={30} color="#900" />;
+
+<Icon name="menu
+
+" size={30} color="#900" />;
+<Icon name="person-outline
+
+
+" size={30} color="#900" />;
+<Icon name="star
+
+" size={30} color="#900" />;
