@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   
   TitleHeading:
   {fontFamily: 'Montserrat-SemiBold'
-  ,fontSize:15,
+  ,fontSize:25,
 color:colors.textDark}
 ,
 SubheadingWrapper:{

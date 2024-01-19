@@ -8,13 +8,13 @@ const CatData = [
 
   {
     id: '9',
-    image: require('../images/plant1.png'),
+    image: require('../images/plant3.png'),
     title: 'Kaktus',
     selected: true,
   },
   {
     id: '2',
-    image: require('../images/plant3.png'),
+    image: require('../images/plant2.png'),
     title: 'Rose',
     selected: false,
   },
@@ -26,16 +26,19 @@ const CatData = [
   },
   {
     id: '3',
-    image: require('../images/plant4.png'),
+    image: require('../images/plant2.png'),
     title: 'Kari Patta',
     selected: false,
   },
   {
     id: '4',
-    image: require('../images/plant2.png'),
+    image: require('../images/plant5.jpg'),
     title: 'Delivery',
     selected: false,
   },
+  
+
+  
 ]; 
 
 export default CatData;

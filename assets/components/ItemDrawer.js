@@ -16,7 +16,7 @@ export default function ItemDrawer(props ) {
   return (
     <View style={{}}>
       <View style={styles.PopularHeading}>
-        <Text style={{fontFamily: 'Montserrat-Regular', color: colors.black}}>
+        <Text style={{fontFamily: 'Montserrat-Regular', color: colors.black ,fontSize:14}}>
           Popular
         </Text>
         <Icon name="arrow-down-outline" size={10} color={colors.textDark} />
@@ -97,8 +97,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.BtnColor,
     borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   PopularHeading: {
     flexDirection: 'row',

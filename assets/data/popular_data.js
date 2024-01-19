@@ -6,9 +6,10 @@ const popularData = [
     rating: '5.0',
     price: 10.99,
     sizeNumber: 10,
+
     deliveryTime: 40,
     details:
-      'Kaktus also known as aloe africana hasstrong air purifying qualities. This succulantplant is known for purifying air from chemicalsfound in household cleaning product. Unlike other indoor plant Aloe keeps water in itsleavesnot the soil untill it needs it. Aloe requiresBright sun light even though it only need very little water.',
+      'Kaktus also known as aloe africana hasstrong air purifying qualities. This succulantplant is known for purifying air from chemicalsfound in household cleaning product. Unlike other indoor plant Aloe keeps water in .',
   },
   {
     id: '2',
@@ -19,7 +20,7 @@ const popularData = [
     sizeNumber: 14,
     deliveryTime: 30,
     details:
-      'Rose also known as aloe africana hasstrong air purifying qualities. This succulantplant is known for purifying air from chemicalsfound in household cleaning product. Unlike other indoor plant Aloe keeps water in itsleavesnot the soil untill it needs it. Aloe requiresBright sun light even though it only need very little water.',
+      'Rose also known as aloe africana hasstrong air purifying qualities. This succulantplant is known for purifying air from chemicalsfound in household cleaning product. Unlike other indoor plant Aloe keeps water in itsleavesnot the soil untill it needs water.',
   },
   {
     id: '3',
@@ -41,7 +42,7 @@ const popularData = [
     sizeNumber: 6,
     deliveryTime: 30,
     details:
-      'Leaf Palm also known as aloe africana hasstrong air purifying qualities. This succulantplant is known for purifying air from chemicalsfound in household cleaning product. Unlike other indoor plant Aloe keeps water in itsleavesnot the soil untill it needs it. Aloe requiresBright sun light ',
+      'Leaf Palm also known as aloe africana hasstrong air purifying qualities. This succulantplant is known for purifying air from chemicalsfound in household cleaning product. Unlike other indoor plant Aloe keeps water in itsleavesnot the soil untill',
   },
   {
     id: '5',
@@ -61,6 +62,19 @@ const popularData = [
     sizeNumber: 6,
     deliveryTime: 30,
   },
+
+  {
+    id: '7',
+    image: require('../images/plant5.jpg'),
+    title: 'Spider-Planta',
+    rating: '5.0',
+    price: 17.99,
+    sizeNumber: 12,
+    deliveryTime: 35,
+    details:
+      " The Spider Plant is a popular and hardy houseplant, well-loved for its easy care and air-purifying qualities. It's particularly known for its attractive foliage and unique growth pattern.",
+  },
+
   //
 ];
 

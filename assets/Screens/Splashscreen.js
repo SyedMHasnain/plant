@@ -1,5 +1,5 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-
+import {Button, Image, Pressable, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import React from 'react';
 import colors from '../theme/colors';
 
@@ -8,13 +8,13 @@ const Splashscreen = ({navigation}) => {
     <View style={styles.container}>
       {/* Heading*/}
       <View style={styles.HeadingWrapper}>
-        <Text style={styles.Heading}>The Best App For Your Plant </Text>
+        <Text style={styles.Heading}>Let's Plant With Us</Text>
+        <Text style={styles.Description}>Make the world green Again </Text>
       </View>
       {/* Image  */}
       <View style={styles.ImageWrapper}>
-       
         <Image
-          source={require('../images/plant4.png')}
+          source={require('../images/Boy.png')}
           style={styles.Image}
           resizeMode="contain"
         />
@@ -35,16 +35,26 @@ const Splashscreen = ({navigation}) => {
         />
       </View> */}
       {/* Button  */}
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
-        style={styles.button}>
-        <Text style={styles.buttontext}>Signin</Text>
-      </TouchableOpacity>
+
+      <Animatable.View 
+      style={styles.buttonWrapper}
+      animation="fadeInRight">
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => navigation.navigate('Home')}
+          style={styles.button}>
+          <Text style={styles.buttontext}>Signin</Text>
+        </TouchableOpacity>
+      </Animatable.View>
+       <Animatable.View animation="fadeInRight"
+       delay={450}>
+        
       <TouchableOpacity
         onPress={() => navigation.navigate('')}
         style={styles.button2}>
         <Text style={styles.buttontext2}>Create An Account?</Text>
       </TouchableOpacity>
+       </Animatable.View>
     </View>
   );
 };
@@ -57,25 +67,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   HeadingWrapper: {
-    marginTop: 20,
-    padding: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 50,
   },
   Heading: {
-    color: colors.Dgreen,
-    fontSize: 32,
+    color: colors.black,
+    fontSize: 28,
+    fontFamily: 'Montserrat-Bold',
+  },
+
+  Description: {
+    color: colors.black,
+    fontSize: 16,
     fontFamily: 'Montserrat-Bold',
     height: 117,
     width: 270,
   },
   ImageWrapper: {
-    marginTop: 25,
+  
+ 
     alignItems: 'center',
     justifyContent: 'center',
+    
   },
-  Image: {
-    width: 250,
-    height: 250,
-  },
+Image:{ 
+  width: 200,
+  height: 300,
+},
+ 
   input: {
     fontFamily: 'Montserrat-Bold',
     marginLeft: 20,
@@ -97,41 +117,39 @@ const styles = StyleSheet.create({
   //     // shadowOpacity: 0.25,
   //     // shadowRadius: 3.84,
   //   },
+  buttonWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+  },
   buttontext2: {
     color: colors.black,
     fontSize: 16,
     fontFamily: 'Montserrat-SemiBold',
   },
   buttontext: {
-    color: colors.white,
+    color:colors.white,
     fontSize: 16,
     fontFamily: 'Montserrat-SemiBold',
   },
   button: {
     marginTop: 50,
-    width: 360,
+    width: 320,
     height: 56,
-    color: '#ffff',
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 10,
+    
     borderRadius: 20,
     backgroundColor: colors.BtnColor,
     fontFamily: 'Montserrat-Regular',
+
   },
   button2: {
     marginTop: 34,
-    width: 360,
-    height: 56,
-    color: colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 10,
-    borderRadius: 20,
-    backgroundColor: colors.BtnColor,
     fontFamily: 'Montserrat-Regular',
-    borderColor: colors.BtnColor,
-    borderWidth: 1,
-    backgroundColor: colors.white,
+    
   },
 });
