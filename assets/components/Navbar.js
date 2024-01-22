@@ -1,8 +1,6 @@
-import {StyleSheet, Text, View, } from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import Incon from 'react-native-vector-icons/Ionicons';
-import colors from '../theme/colors'
+import {colors, Incon, Icon} from '../Imports/globalImports';
 const Navbar = () => {
   return (
     <View style={styles.Container}>
@@ -12,10 +10,7 @@ const Navbar = () => {
           <Text style={styles.TitleHeading}>All Plants</Text>
         </View>
 
-       
-          <Incon name="search" size={25} color={colors.textDark} />
-       
-
+        <Incon name="search" size={25} color={colors.textDark} />
       </View>
 
       <View style={styles.SubheadingWrapper}>
@@ -24,11 +19,32 @@ const Navbar = () => {
     </View>
   );
 };
-
 export default Navbar;
+const Nav = () => {
+  return (
+    
+
+      <View style={styles.iconhead}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          activeOpacity={0.7}
+          style={styles.backicon}>
+          <Icon name="chevron-back" size={30} color={colors.black} />
+        </TouchableOpacity>
+
+        <Icon name="heart" size={30} color="red" />
+      </View>
+   
+  );
+};
+export {Nav};
 
 const styles = StyleSheet.create({
-  
+  iconhead: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
   Header: {
     paddingTop: 15,
     marginHorizontal: 20,
@@ -36,28 +52,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  HeaderTilteBack:{
+  HeaderTilteBack: {
     flexDirection: 'row',
-    gap:15,
+    gap: 15,
     justifyContent: 'space-between',
     alignItems: 'center',
-
   },
-  
-  TitleHeading:
-  {fontFamily: 'Montserrat-SemiBold'
-  ,fontSize:25,
-color:colors.textDark}
-,
-SubheadingWrapper:{
-  paddingHorizontal:20,
-  paddingVertical:32,
-  width:230,
-  height: 140,
-},
-Subheading:{
-  fontFamily: 'Montserrat-SemiBold',
-  color:colors.textDark,
-  fontSize:28,
-},
+
+  TitleHeading: {
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 25,
+    color: colors.textDark,
+  },
+  SubheadingWrapper: {
+    paddingHorizontal: 20,
+    paddingVertical: 32,
+    width: 230,
+    height: 140,
+  },
+  Subheading: {
+    fontFamily: 'Montserrat-SemiBold',
+    color: colors.textDark,
+    fontSize: 28,
+  },
 });

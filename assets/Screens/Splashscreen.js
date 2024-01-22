@@ -1,7 +1,15 @@
-import {Button, Image, Pressable, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Dimensions,
+} from 'react-native';
+//import * as  from 'react-native-animatable';
 import React from 'react';
-import colors from '../theme/colors';
+import {Animatable, colors} from '../Imports/globalImports';
+import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 
 const Splashscreen = ({navigation}) => {
   return (
@@ -36,9 +44,7 @@ const Splashscreen = ({navigation}) => {
       </View> */}
       {/* Button  */}
 
-      <Animatable.View 
-      style={styles.buttonWrapper}
-      animation="fadeInRight">
+      <Animatable.View style={styles.buttonWrapper} animation="fadeInRight">
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => navigation.navigate('Home')}
@@ -46,15 +52,13 @@ const Splashscreen = ({navigation}) => {
           <Text style={styles.buttontext}>Signin</Text>
         </TouchableOpacity>
       </Animatable.View>
-       <Animatable.View animation="fadeInRight"
-       delay={450}>
-        
-      <TouchableOpacity
-        onPress={() => navigation.navigate('')}
-        style={styles.button2}>
-        <Text style={styles.buttontext2}>Create An Account?</Text>
-      </TouchableOpacity>
-       </Animatable.View>
+      <Animatable.View animation="fadeInRight" delay={450}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('')}
+          style={styles.button2}>
+          <Text style={styles.buttontext2}>Create An Account?</Text>
+        </TouchableOpacity>
+      </Animatable.View>
     </View>
   );
 };
@@ -84,18 +88,12 @@ const styles = StyleSheet.create({
     height: 117,
     width: 270,
   },
-  ImageWrapper: {
-  
- 
-    alignItems: 'center',
-    justifyContent: 'center',
-    
+
+  Image: {
+    width: scale(350),
+    height: verticalScale(250),
   },
-Image:{ 
-  width: 200,
-  height: 300,
-},
- 
+
   input: {
     fontFamily: 'Montserrat-Bold',
     marginLeft: 20,
@@ -120,7 +118,6 @@ Image:{
   buttonWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    
   },
   buttontext2: {
     color: colors.black,
@@ -128,7 +125,7 @@ Image:{
     fontFamily: 'Montserrat-SemiBold',
   },
   buttontext: {
-    color:colors.white,
+    color: colors.white,
     fontSize: 16,
     fontFamily: 'Montserrat-SemiBold',
   },
@@ -138,11 +135,10 @@ Image:{
     height: 56,
     justifyContent: 'center',
     alignItems: 'center',
-    
+
     borderRadius: 20,
     backgroundColor: colors.BtnColor,
     fontFamily: 'Montserrat-Regular',
-
   },
   button2: {
     marginTop: 34,
@@ -150,6 +146,5 @@ Image:{
     alignItems: 'center',
     marginHorizontal: 10,
     fontFamily: 'Montserrat-Regular',
-    
   },
 });

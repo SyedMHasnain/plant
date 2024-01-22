@@ -1,95 +1,105 @@
-import {StyleSheet, FlatList, Image, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
-import popularData from '../data/popular_data';
-import colors from '../theme/colors';
-import Icon from 'react-native-vector-icons/Ionicons';
-import Like from '../Screens/Detail';
+import {
+  StyleSheet,
+  FlatList,
+  Image,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
+import React ,{createContext, useState}from 'react';
+import {colors, Icon, Like, popularData} from '../Imports/globalImports';
+import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 
 
-export default function ItemDrawer(props ) {
 
-  const {navigation , route } = props
- 
-  // ) const handlepress= () => (
-  //   )
+const  ItemDrawer = (props) => {
   
+  const {navigation, route} = props;
+  const [cartCount, setCartCount] = useState(0);
+  let plusitems = () => {
+    setCartCount(cartCount + 1);
+  };
   return (
-    <View style={{}}>
-      <View style={styles.PopularHeading}>
-        <Text style={{fontFamily: 'Montserrat-Regular', color: colors.black ,fontSize:14}}>
-          Popular
-        </Text>
-        <Icon name="arrow-down-outline" size={10} color={colors.textDark} />
-      </View>
-      <View
     
-       style={{flex: 1, flexDirection: 'row'}}>
-        {/* flatlist */}
-        <FlatList
-          numColumns={2}
-          scrollEnabled={false}
-          data={popularData}
-          renderItem={({item, index}) => (
-            // Flatlist Start
-            <TouchableOpacity
-              activeOpacity={0.9}
-              onPress={() => navigation.navigate('Detail', {item: item})}>
-            
+      <View style={{}}>
+        <View style={styles.PopularHeading}>
+          <Text
+            style={{
+              fontFamily: 'Montserrat-Regular',
+              color: colors.black,
+              fontSize: 14,
+            }}>
+            Popular
+          </Text>
+          <Icon name="arrow-down-outline" size={10} color={colors.textDark} />
+        </View>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          {/* flatlist */}
+          <FlatList
+            numColumns={2}
+            scrollEnabled={false}
+            data={popularData}
+            renderItem={({item, index}) => (
+              // Flatlist Start
+              <TouchableOpacity
+                activeOpacity={0.9}
+                onPress={() => navigation.navigate('Detail', {item: item})}>
+                <View style={styles.mainView}>
+                  <View style={styles.imgbgcolor}>
+                    <Image style={[styles.img]} source={item.image} />
+                  </View>
 
-              <View style={styles.mainView}>
-                <View style={styles.imgbgcolor}>
-                  <Image style={[styles.img]} source={item.image} />
-                </View>
-
-                <View style={styles.DetailWrapper}>
-                  <View style={{flexDirection: 'row'}}>
-                    <Text
-                      style={{
-                        fontFamily: 'Montserrat-Bold',
-                        color: colors.black,
-                      }}>
-                      {item.title}
-                    </Text>
-                    <View style={{flexDirection: 'row', marginLeft: 5}}>
-                      <Icon name="star" size={15} color={colors.secondary} />
+                  <View style={styles.DetailWrapper}>
+                    <View style={{flexDirection: 'row'}}>
                       <Text
                         style={{
-                          fontFamily: 'Montserrat-Regular',
-                          marginLeft: 5,
+                          fontFamily: 'Montserrat-Bold',
+                          color: colors.black,
                         }}>
-                        {item.rating}
+                        {item.title}
                       </Text>
+                      <View style={{flexDirection: 'row', marginLeft: 5}}>
+                        <Icon name="star" size={15} color={colors.secondary} />
+                        <Text
+                          style={{
+                            fontFamily: 'Montserrat-Regular',
+                            marginLeft: 5,
+                          }}>
+                          {item.rating}
+                        </Text>
+                      </View>
+                    </View>
+
+                    <View>
+                     
+                      <Text style={styles.text}>
+                        $ {item.price}
+                      </Text>
+                      {/* <TouchableOpacity
+                        activeOpacity={0.9}
+                        onPress={plusitems}
+                        style={styles.imgAddCart}>
+                        <Icon name="add" size={17} color={colors.white} />
+                      </TouchableOpacity> */}
                     </View>
                   </View>
-
-                  <View>
-                    <Text style={styles.text}>From {item.sizeNumber}</Text>
-                    <Text style={[styles.text, {color: colors.black}]}>
-                      $ {item.price}
-                    </Text>
-                    <TouchableOpacity
-                      activeOpacity={0.9}
-                      onPress={() => console.log('Add to cart')}
-                      style={styles.imgAddCart}>
-                      <Icon name="add" size={17} color={colors.white} />
-                    </TouchableOpacity>
-                  </View>
                 </View>
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={item => item.id.toString()}
-        />
-        {/* FlatList End */}
+              </TouchableOpacity>
+            )}
+            keyExtractor={item => item.id.toString()}
+          />
+          {/* FlatList End */}
+        </View>
       </View>
-    </View>
+    
   );
 }
+export default ItemDrawer
 
 const styles = StyleSheet.create({
   imgAddCart: {
-    width: 25,
-    height: 25,
+    width: scale(20),
+    height: verticalScale(20),
     position: 'absolute',
     bottom: 20,
     right: 20,
@@ -106,7 +116,6 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   mainView: {
-    
     height: 210,
     width: 165,
     marginLeft: 15,
@@ -126,8 +135,10 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   text: {
-    color: colors.textDark,
-    fontFamily: 'Montserrat-Regular',
+    marginTop: 10,
+    fontSize: 18,
+    color: colors.price,
+    fontFamily: 'Montserrat-SemiBold',
   },
 
   img: {

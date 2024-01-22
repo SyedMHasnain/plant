@@ -32,7 +32,7 @@ const CatData = [
   },
   {
     id: '4',
-    image: require('../images/plant5.jpg'),
+    image: require('../images/plant5.png'),
     title: 'Delivery',
     selected: false,
   },

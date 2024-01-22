@@ -65,7 +65,7 @@ const popularData = [
 
   {
     id: '7',
-    image: require('../images/plant5.jpg'),
+    image: require('../images/plant5.png'),
     title: 'Spider-Planta',
     rating: '5.0',
     price: 17.99,
