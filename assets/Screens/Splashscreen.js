@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   HeadingWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 40,
   },
   Heading: {
     color: colors.black,
@@ -85,13 +85,13 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 16,
     fontFamily: 'Montserrat-Bold',
-    height: 117,
-    width: 270,
+    height: verticalScale(117),
+    width: scale(270),
   },
 
   Image: {
     width: scale(350),
-    height: verticalScale(250),
+    height: verticalScale(220),
   },
 
   input: {

@@ -1,6 +1,8 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {colors, Incon, Icon} from '../Imports/globalImports';
+import {colors, Incon, Icon, verticalScale, scale} from '../Imports/globalImports';
+import { useNavigation } from '@react-navigation/native';
+
 const Navbar = () => {
   return (
     <View style={styles.Container}>
@@ -21,6 +23,7 @@ const Navbar = () => {
 };
 export default Navbar;
 const Nav = () => {
+  const navigation = useNavigation();
   return (
     
 
@@ -65,10 +68,11 @@ const styles = StyleSheet.create({
     color: colors.textDark,
   },
   SubheadingWrapper: {
+    marginTop: 20,
     paddingHorizontal: 20,
-    paddingVertical: 32,
-    width: 230,
-    height: 140,
+    width: scale(210),
+    height: verticalScale(110),
+    // backgroundColor: "red",
   },
   Subheading: {
     fontFamily: 'Montserrat-SemiBold',

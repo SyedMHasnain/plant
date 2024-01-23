@@ -1,23 +1,22 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View, } from 'react-native';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
+
 import {Nav} from '../components/Navbar';
-import { colors, Icon, Incon } from '../Imports/globalImports';
+import {colors, Icon,} from '../Imports/globalImports';
 
 const Detail = ({navigation, route}) => {
   const {item} = route.params;
   const [cartCount, setCartCount] = useState(0);
-
+  // const [modal, setModal] = useState(false);
+  // const togglemodal = () => setModal(!modal);
   const removeitem = () =>
     cartCount > 1 ? setCartCount(cartCount - 1) : setCartCount(0);
 
-  const addcart = () => {
-    if (cartCount < 1) {
-      console.log(' Cart is Empty ');
-    } else {
-      navigation.navigate('Cart');
-    }
+   const addcart = () => {
+      navigation.navigate('Cart', {item: item});
+  //   cartCount < 1 ? navigation.navigate('Cart') : navigation.navigate('Cart');    }
   };
   return (
     <View style={styles.container}>
@@ -81,7 +80,14 @@ const Detail = ({navigation, route}) => {
           <Text style={styles.text}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
-    </View>
+        {/* <Modal isVisible={modal}>
+          <View style={{flex: 1}}>
+            <Text>Hello!</Text>
+            <Button title="Hide modal" onPress={togglemodal} />
+          </View>
+        </Modal> */}
+      </View>
+   
   );
 };
 
@@ -116,8 +122,8 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    width: scale(300),
-    height: verticalScale(210),
+    width: scale(220),
+    height: verticalScale(300),
   },
   Headingtext: {
     fontFamily: 'Montserrat-Bold',

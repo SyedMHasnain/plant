@@ -14,14 +14,14 @@ import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 
 const  ItemDrawer = (props) => {
   
-  const {navigation, route} = props;
+  const {navigation} = props;
   const [cartCount, setCartCount] = useState(0);
   let plusitems = () => {
     setCartCount(cartCount + 1);
   };
   return (
     
-      <View style={{}}>
+      <View >
         <View style={styles.PopularHeading}>
           <Text
             style={{
@@ -33,7 +33,7 @@ const  ItemDrawer = (props) => {
           </Text>
           <Icon name="arrow-down-outline" size={10} color={colors.textDark} />
         </View>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={{flex: 1, flexWrap:'wrap',flexDirection: 'row'}}>
           {/* flatlist */}
           <FlatList
             numColumns={2}
@@ -113,14 +113,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 2,
     paddingLeft: 24,
-    marginTop: 50,
+    marginTop: 10,
   },
   mainView: {
-    height: 210,
-    width: 165,
+    flex: 1,
+    overflow: 'hidden',
+    height: verticalScale(230),
+    width: scale(150),
     marginLeft: 15,
-    marginTop: 20,
+    marginTop: 10,
     borderRadius: 10,
+    marginBottom:10,
     backgroundColor: colors.white,
 
     shadowColor: '#000',
@@ -143,8 +146,9 @@ const styles = StyleSheet.create({
 
   img: {
     marginTop: 15,
-    width: 140,
-    height: 100,
+    width: scale(110),
+    height: verticalScale(120),
+    justifyContent: 'center',
   },
 
   TitleRating: {

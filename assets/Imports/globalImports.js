@@ -5,7 +5,9 @@ import Like from '../Screens/Detail';
 import * as Animatable from 'react-native-animatable';
 import Incon from 'react-native-vector-icons/Ionicons';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
+import Modal from 'react-native-modal';
 export {
+  Modal,
   colors,
   Animatable,
   Like,
