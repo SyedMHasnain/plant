@@ -1,22 +1,20 @@
 import {Image, StyleSheet, Text, View, } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
-import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
-
 import {Nav} from '../components/Navbar';
-import {colors, Icon,} from '../Imports/globalImports';
+import {colors, Icon, scale, verticalScale} from '../Imports/globalImports';
+import { Globalinfo } from '../../App';
 
 const Detail = ({navigation, route}) => {
   const {item} = route.params;
-  const [cartCount, setCartCount] = useState(0);
-  // const [modal, setModal] = useState(false);
-  // const togglemodal = () => setModal(!modal);
+  const {cartCount ,setCartCount} = useContext(Globalinfo);
   const removeitem = () =>
     cartCount > 1 ? setCartCount(cartCount - 1) : setCartCount(0);
 
    const addcart = () => {
+
       navigation.navigate('Cart', {item: item});
-  //   cartCount < 1 ? navigation.navigate('Cart') : navigation.navigate('Cart');    }
+  
   };
   return (
     <View style={styles.container}>
@@ -72,6 +70,7 @@ const Detail = ({navigation, route}) => {
         </View>
         {/* Quantiyty Counter */}
       </View>
+
       <View style={styles.addcartbtn}>
         <TouchableOpacity
           activeOpactiy={0.7}
@@ -80,12 +79,7 @@ const Detail = ({navigation, route}) => {
           <Text style={styles.text}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
-        {/* <Modal isVisible={modal}>
-          <View style={{flex: 1}}>
-            <Text>Hello!</Text>
-            <Button title="Hide modal" onPress={togglemodal} />
-          </View>
-        </Modal> */}
+        
       </View>
    
   );

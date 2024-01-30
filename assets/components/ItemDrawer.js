@@ -6,14 +6,16 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import React ,{createContext, useState}from 'react';
+import React ,{createContext, useContext, useState}from 'react';
 import {colors, Icon, Like, popularData} from '../Imports/globalImports';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
+import { Globalinfo } from '../../App';
+
 
 
 
 const  ItemDrawer = (props) => {
-  
+
   const {navigation} = props;
   const [cartCount, setCartCount] = useState(0);
   let plusitems = () => {
@@ -39,6 +41,7 @@ const  ItemDrawer = (props) => {
             numColumns={2}
             scrollEnabled={false}
             data={popularData}
+           
             renderItem={({item, index}) => (
               // Flatlist Start
               <TouchableOpacity

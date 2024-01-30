@@ -1,11 +1,10 @@
-
-import React from 'react'
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Cart from '../Screens/Cart';
 import Home from '../Screens/Home';
 import Splashscreen from '../Screens/Splashscreen';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../theme/colors';
 import {AnimatedTabBarNavigator} from 'react-native-animated-nav-tab-bar';
@@ -87,8 +86,7 @@ const Stack = createNativeStackNavigator();
 //   );
 // }
 
-
-const Navigation = (props) => {
+const Navigation = props => {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -96,25 +94,19 @@ const Navigation = (props) => {
           headerShown: false,
         }}>
         <Stack.Screen name="Splashscreen" component={Splashscreen} />
-        
         <Stack.Screen name="Detail" component={Detail} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Cart" component={Cart} />
-        
-
-       
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
-export default Navigation
-
+};
+export default Navigation;
 
 const styles = StyleSheet.create({
-  tabbar:{
-   borderTopLeftRadius:30,
-   borderTopRightRadius:30,
-   backgroundColor:colors.primary,  
-   
+  tabbar: {
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    backgroundColor: colors.primary,
   },
 });

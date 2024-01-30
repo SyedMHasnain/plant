@@ -22,6 +22,7 @@ const Navbar = () => {
   );
 };
 export default Navbar;
+
 const Nav = () => {
   const navigation = useNavigation();
   return (
