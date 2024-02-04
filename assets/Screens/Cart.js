@@ -1,7 +1,6 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React, {useContext} from 'react';
 import LottieView from 'lottie-react-native';
-
 import {Globalinfo} from '../../App';
 import {
   Econ,
@@ -9,12 +8,10 @@ import {
   scale,
   verticalScale,
   moderateScale,
-}
- from '../Imports/globalImports';
-import Navbar, { Nav } from '../components/Navbar';
-
+} from '../Imports/globalImports';
+import Navbar, {Nav} from '../components/Navbar';
 const Cart = ({route}) => {
-  const {appcolor, cartCount} = useContext(Globalinfo);
+  const { cartCount} = useContext(Globalinfo);
   const {item} = route.params;
 
   return (
@@ -62,9 +59,7 @@ export default Cart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
-
   cartitemWrapper: {
     justifyContent: 'flex-start',
     margin: 20,
