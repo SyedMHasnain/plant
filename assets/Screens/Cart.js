@@ -19,36 +19,52 @@ const Cart = ({route}) => {
       <View style={styles.Nav}>
         <Nav />
       </View>
-      <View style={styles.cartitemWrapper}>
-        {/* Image */}
-        <View style={styles.imgreapper}>
-          <Image source={item.image} style={styles.img} />
+
+      {/* If Items is not in cart */}
+      {cartCount > 0 ? (
+        //  cartConmtainer
+        <View style={styles.cartitemWrapper}>
+          {/* Image */}
+          <View style={styles.imgreapper}>
+            <Image source={item.image} style={styles.img} />
+          </View>
+          {/* TExt */}
+          <View style={styles.title}>
+            <Text style={styles.cartitemtxt}>{item.title}</Text>
+            <Text style={styles.cartitemtxt}>$ {item.price}</Text>
+            <Text style={styles.cartitemtxt}>{item.sizeNumber}" Inches</Text>
+          </View>
+          <View style={{marginLeft: moderateScale(68)}}>
+            <Econ
+              style={{}}
+              name="delete-outline"
+              size={28}
+              color={colors.primary}
+            />
+          </View>
         </View>
-        {/* TExt */}
-        <View style={styles.title}>
-          <Text style={styles.cartitemtxt}>{item.title}</Text>
-          <Text style={styles.cartitemtxt}>$ {item.price}</Text>
-          <Text style={styles.cartitemtxt}>
-            Delivery Time {item.deliveryTime} Min
+      ) : (
+        //  cartConmtainer End
+        <View style={{flex: 1, marginTop: 90, alignItems: 'center'}}>
+          <LottieView
+            style={{
+              width: scale(200),
+              height: verticalScale(200),
+              transform: [{scaleX: -1}],
+            }}
+            source={require('../images/Animation - plant.json')}
+            autoPlay
+            loop
+          />
+          <Text
+            style={{
+              color: colors.black,
+              fontSize: 29,
+              fontFamily: 'Montserrat-Regular',
+            }}>
+            Your Cart is Empty
           </Text>
         </View>
-        <View style={styles.Deleteicon}>
-          <Econ name="delete" size={20} color={colors.black} />
-        </View>
-      </View>
-
-      {cartCount > 0 ? (
-        <Text style={styles.Text}>{item.title}Your Cart Full </Text>
-      ) : (
-        <LottieView
-          style={{
-            width: scale(120),
-            height: verticalScale(200),
-          }}
-          source={require('../images/Animation - plant.json')}
-          autoPlay
-          loop
-        />
       )}
     </View>
   );
@@ -59,13 +75,14 @@ export default Cart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    
   },
   cartitemWrapper: {
-    justifyContent: 'flex-start',
-    margin: 20,
-    backgroundColor: colors.catcolor,
+    margin: 10,
+    // backgroundColor: colors.primary,
     flexDirection: 'row',
-    borderWidth: 1,
+    // borderRadius:20,
+    // borderWidth: 1,
     height: verticalScale(100),
     width: scale(300),
   },
@@ -73,8 +90,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   img: {
-    width: scale(100),
+    backgroundColor:colors.primary,
+    borderRadius: 20,
+    width: scale(90),
     height: verticalScale(100),
+    marginRight:10,
   },
   Text: {
     fontSize: moderateScale(20),
@@ -82,7 +102,7 @@ const styles = StyleSheet.create({
     color: colors.catcolor,
   },
   cartitemtxt: {
-    fontSize: moderateScale(13),
+    fontSize: moderateScale(18),
     fontFamily: 'Montserrat-Regular',
     color: colors.black,
   },

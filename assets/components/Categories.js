@@ -18,7 +18,7 @@ const categories = () => {
       {CatData.map((item, index) => (
         <TouchableOpacity
           activeOpacity={0.7}
-          //onPress={ () => navigation.navigate("") }
+        
           style={[
             styles.Listwrapper,
               {

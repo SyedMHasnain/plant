@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, View, } from 'react-native';
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Nav} from '../components/Navbar';
 import {colors, Icon, scale, verticalScale} from '../Imports/globalImports';
@@ -29,12 +29,15 @@ const Detail = ({navigation, route}) => {
       {/* Footer */}
 
       <View style={styles.FooterWrapper}>
+        
         <View style={styles.DeatilWrapper}>
           <Text style={styles.Headingtext}>{item.title}</Text>
+
           <View>
             <Text style={styles.textdetail}>{item.details}</Text>
           </View>
         </View>
+
       </View>
       <View style={styles.prices}>
         {/* Price */}
@@ -145,7 +148,7 @@ const styles = StyleSheet.create({
   },
 
   addtocart: {
-    backgroundColor: colors.primary,
+    backgroundColor: '#99BC85',
     padding: 10,
     width: scale(280),
     justifyContent: 'center',
@@ -164,7 +167,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   addcartbtn: {
-    marginBottom: 10,
+    marginBottom: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },

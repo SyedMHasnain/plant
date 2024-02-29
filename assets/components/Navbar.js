@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   iconhead: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    padding: 20,
   },
   Header: {
     paddingTop: 15,

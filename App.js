@@ -16,7 +16,6 @@ const Apps = () => {
 
   return (
     <Globalinfo.Provider value={{
-  
       popularData,
       cartCount,
       setCartCount,

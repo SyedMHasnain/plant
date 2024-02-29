@@ -61,6 +61,8 @@ const popularData = [
     price: 12.99,
     sizeNumber: 6,
     deliveryTime: 30,
+    details:
+      " The Money Plant is a popular and hardy houseplant, well-loved for its easy care and air-purifying qualities. It's particularly known for its attractive foliage and unique growth pattern.",
   },
 
   {
