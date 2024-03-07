@@ -11,6 +11,7 @@ import React from 'react';
 import {Animatable, colors} from '../Imports/globalImports';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 
+
 const Splashscreen = ({navigation}) => {
   return (
     <View style={styles.container}>
@@ -60,6 +61,7 @@ const Splashscreen = ({navigation}) => {
         </TouchableOpacity>
       </Animatable.View>
     </View>
+    
   );
 };
 

@@ -7,12 +7,14 @@ import { Globalinfo } from '../../App';
 
 const Detail = ({navigation, route}) => {
   const {item} = route.params;
+
   const {cartCount ,setCartCount} = useContext(Globalinfo);
+
   const removeitem = () =>
     cartCount > 1 ? setCartCount(cartCount - 1) : setCartCount(0);
 
    const addcart = () => {
-
+        setCartCount(cartCount + 1)
       navigation.navigate('Cart', {item: item});
   
   };
@@ -47,7 +49,7 @@ const Detail = ({navigation, route}) => {
         </View>
         {/* PriceEnd  */}
 
-        {/* Quantiyty Counter */}
+        {/* Quantiyty Counter
         <View>
           <Text style={styles.text}>Quantity</Text>
           <View style={styles.cartQuantity}>
@@ -64,13 +66,15 @@ const Detail = ({navigation, route}) => {
             <View style={styles.counterWrapper}>
               <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => setCartCount(cartCount + 1)}
-                style={styles.AddCart}>
+                
+                
+                // onPress={() => setCartCount(cartCount + 1)}
+              style={styles.AddCart}>
                 <Icon name="add" size={17} color={colors.white} />
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </View> */}
         {/* Quantiyty Counter */}
       </View>
 
@@ -80,6 +84,8 @@ const Detail = ({navigation, route}) => {
           style={styles.addtocart}
           onPress={addcart}>
           <Text style={styles.text}>Add to Cart</Text>
+
+          
         </TouchableOpacity>
       </View>
         

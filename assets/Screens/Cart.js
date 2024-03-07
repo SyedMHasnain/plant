@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
-import React, {useContext} from 'react';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import React, {useContext, useState} from 'react';
 import LottieView from 'lottie-react-native';
 import {Globalinfo} from '../../App';
 import {
@@ -10,9 +10,23 @@ import {
   moderateScale,
 } from '../Imports/globalImports';
 import Navbar, {Nav} from '../components/Navbar';
+
 const Cart = ({route}) => {
-  const { cartCount} = useContext(Globalinfo);
+  const {cartCount , setCartCount} = useContext(Globalinfo);
   const {item} = route.params;
+ const [deleteItem, setDeleteitem] = useState(true)
+
+ const remove_item = ()=> {
+  if (deleteItem) {
+      // If item is being deleted, decrease cart count
+      setCartCount(prevCount => prevCount  == 0);
+    } else {
+      // If item is being added back, increase cart count
+      setCartCount(prevCount => prevCount + 1);
+    }
+    // Toggle deleteItem state
+    // setDeleteitem(prevDelete => !prevDelete);
+  }
 
   return (
     <View style={styles.container}>
@@ -33,14 +47,43 @@ const Cart = ({route}) => {
             <Text style={styles.cartitemtxt}>{item.title}</Text>
             <Text style={styles.cartitemtxt}>$ {item.price}</Text>
             <Text style={styles.cartitemtxt}>{item.sizeNumber}" Inches</Text>
+
+            {/* Quantiyty Counter
+        <View>
+          <Text style={styles.text}>Quantity</Text>
+          <View style={styles.cartQuantity}>
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={removeitem}
+              style={styles.AddCart}>
+              <Icon name="remove" size={17} color={colors.white} />
+            </TouchableOpacity>
+            <Text style={{color: colors.black, fontSize: 19, marginTop: 8}}>
+              {cartCount}
+            </Text>
+
+            <View style={styles.counterWrapper}>
+              <TouchableOpacity
+                activeOpacity={0.9}
+                // onPress={() => setCartCount(cartCount + 1)}
+                style={styles.AddCart}>
+                <Icon name="add" size={17} color={colors.white} />
+              </TouchableOpacity>
+            </View>
           </View>
+        </View> */}
+            {/* Quantiyty Counter */}
+          </View>
+
           <View style={{marginLeft: moderateScale(68)}}>
-            <Econ
-              style={{}}
-              name="delete-outline"
-              size={28}
-              color={colors.primary}
-            />
+            <TouchableOpacity onPress={remove_item}>
+              <Econ
+                style={{}}
+                name="delete-outline"
+                size={28}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
           </View>
         </View>
       ) : (
@@ -75,7 +118,7 @@ export default Cart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
+
   },
   cartitemWrapper: {
     margin: 10,
@@ -90,11 +133,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   img: {
-    backgroundColor:colors.primary,
+    backgroundColor: colors.primary,
     borderRadius: 20,
     width: scale(90),
     height: verticalScale(100),
-    marginRight:10,
+    marginRight: 10,
   },
   Text: {
     fontSize: moderateScale(20),
