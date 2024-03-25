@@ -11,7 +11,8 @@ const Home = props => {
       <Navbar />
       <Categories />
       <View>
-        <ItemDrawer navigation={props.navigation} route={props.route} />
+        <ItemDrawer
+        awer navigation={props.navigation} route={props.route} />
       </View>
     </ScrollView>
   );

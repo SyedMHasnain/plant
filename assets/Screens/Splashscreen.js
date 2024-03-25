@@ -4,15 +4,53 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Dimensions,
+  TextInput,
+  Alert,
 } from 'react-native';
 //import * as  from 'react-native-animatable';
-import React from 'react';
+import React, {useContext, useState} from 'react';
+import {Globalinfo} from '../../App';
 import {Animatable, colors} from '../Imports/globalImports';
-import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
-
+import {scale, verticalScale, moderateScale, s} from 'react-native-size-matters';
+import auth from '@react-native-firebase/auth';
 
 const Splashscreen = ({navigation}) => {
+  const {password, setEmail, setPassword, email} = useContext(Globalinfo);
+  const [islogin, setislogin] = useState(false);
+
+  
+ 
+  const CreateAccount = () => {
+    //create Account
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        Alert.alert('User account created & signed in!');
+          navigation.navigate('Home');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+         Alert.alert('User Already exist');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          Alert.alert('User Already exist ');
+        }
+
+        console.error(error);
+      });
+  };
+  const signIn = () => {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        navigation.navigate('Home');
+      })
+      .catch(error => {
+       Alert.alert("User not found ");
+      });
+  };
+
   return (
     <View style={styles.container}>
       {/* Heading*/}
@@ -29,39 +67,52 @@ const Splashscreen = ({navigation}) => {
         />
       </View>
       {/* Login Form  */}
-      {/* <View style={styles.textInput}>
+      <View style={styles.textInput}>
         <TextInput
           style={styles.input}
           placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
           placeholderTextColor={colors.Dgreen}
         />
+        
       </View>
       <View style={styles.textInput}>
         <TextInput
           style={styles.input}
+          secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
           placeholder="Password"
           placeholderTextColor={colors.Dgreen}
         />
-      </View> */}
-      {/* Button  */}
+      </View>
+      {/* Button  Sign in Create An Account */}
 
+      {/* sign In */}
       <Animatable.View style={styles.buttonWrapper} animation="fadeInRight">
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => {
+    if (!email || !password || email.length === 0 || password.length === 0) {
+      Alert.alert('Please enter both email and password');
+     
+    } else {
+      signIn(); // Trigger sign-in function if both email and password are filled
+    }
+            
+          }}
           style={styles.button}>
-          <Text style={styles.buttontext}>Signin</Text>
+          <Text style={styles.buttontext}>Sign in</Text>
         </TouchableOpacity>
       </Animatable.View>
+      {/* Create Account */}
       <Animatable.View animation="fadeInRight" delay={450}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('')}
-          style={styles.button2}>
-          <Text style={styles.buttontext2}>Create An Account?</Text>
+        <TouchableOpacity onPress={CreateAccount} style={styles.button2}>
+          <Text style={styles.buttontext2}>Create An Account</Text>
         </TouchableOpacity>
       </Animatable.View>
     </View>
-    
   );
 };
 
@@ -93,30 +144,29 @@ const styles = StyleSheet.create({
 
   Image: {
     width: scale(350),
-    height: verticalScale(220),
+    height: verticalScale(200),
   },
 
   input: {
     fontFamily: 'Montserrat-Bold',
-    marginLeft: 20,
-    color: colors.black,
+    margin: moderateScale(5),
+    color: colors.primary,
+    paddingLeft: moderateScale(20),
   },
 
-  //   textInput: {
-  //     margin: 6,
-  //     padding: 4,
-  //     backgroundColor: '#ebfdf2',
-
-  //     borderRadius: 20,
-  //     // shadowColor: '#000',
-  //     // shadowOffset: {
-  //     //   width: 0,
-  //     //   height: 2,
-  //     // },
-  //     // elevation: 2,
-  //     // shadowOpacity: 0.25,
-  //     // shadowRadius: 3.84,
-  //   },
+  textInput: {
+    margin: moderateScale(6),
+    backgroundColor: '#ebfdf2',
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    elevation: 2,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
   buttonWrapper: {
     justifyContent: 'center',
     alignItems: 'center',

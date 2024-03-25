@@ -2,7 +2,12 @@ import {Image, StyleSheet, Text, View, } from 'react-native';
 import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Nav} from '../components/Navbar';
-import {colors, Icon, scale, verticalScale} from '../Imports/globalImports';
+import {
+  colors,
+  scale,
+  verticalScale,
+  Animatable,
+} from '../Imports/globalImports';
 import { Globalinfo } from '../../App';
 
 const Detail = ({navigation, route}) => {
@@ -10,8 +15,8 @@ const Detail = ({navigation, route}) => {
 
   const {cartCount ,setCartCount} = useContext(Globalinfo);
 
-  const removeitem = () =>
-    cartCount > 1 ? setCartCount(cartCount - 1) : setCartCount(0);
+  // const removeitem = () =>
+  //   cartCount > 1 ? setCartCount(cartCount - 1) : setCartCount(0);
 
    const addcart = () => {
         setCartCount(cartCount + 1)
@@ -31,7 +36,6 @@ const Detail = ({navigation, route}) => {
       {/* Footer */}
 
       <View style={styles.FooterWrapper}>
-        
         <View style={styles.DeatilWrapper}>
           <Text style={styles.Headingtext}>{item.title}</Text>
 
@@ -39,7 +43,6 @@ const Detail = ({navigation, route}) => {
             <Text style={styles.textdetail}>{item.details}</Text>
           </View>
         </View>
-
       </View>
       <View style={styles.prices}>
         {/* Price */}
@@ -48,49 +51,18 @@ const Detail = ({navigation, route}) => {
           <Text style={styles.text}>$ {item.price}</Text>
         </View>
         {/* PriceEnd  */}
-
-        {/* Quantiyty Counter
-        <View>
-          <Text style={styles.text}>Quantity</Text>
-          <View style={styles.cartQuantity}>
-            <TouchableOpacity
-              activeOpacity={0.9}
-              onPress={removeitem}
-              style={styles.AddCart}>
-              <Icon name="remove" size={17} color={colors.white} />
-            </TouchableOpacity>
-            <Text style={{color: colors.black, fontSize: 19, marginTop: 8}}>
-              {cartCount}
-            </Text>
-
-            <View style={styles.counterWrapper}>
-              <TouchableOpacity
-                activeOpacity={0.9}
-                
-                
-                // onPress={() => setCartCount(cartCount + 1)}
-              style={styles.AddCart}>
-                <Icon name="add" size={17} color={colors.white} />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View> */}
-        {/* Quantiyty Counter */}
       </View>
-
-      <View style={styles.addcartbtn}>
-        <TouchableOpacity
-          activeOpactiy={0.7}
-          style={styles.addtocart}
-          onPress={addcart}>
-          <Text style={styles.text}>Add to Cart</Text>
-
-          
-        </TouchableOpacity>
-      </View>
-        
-      </View>
-   
+      <Animatable.View animation="fadeInUp" delay={450}>
+        <View style={styles.addcartbtn}>
+          <TouchableOpacity
+            activeOpactiy={0.7}
+            style={styles.addtocart}
+            onPress={addcart}>
+            <Text style={styles.text}>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
+      </Animatable.View>
+    </View>
   );
 };
 
@@ -162,7 +134,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 10,
   },
-  counterWrapper: {},
+  
   AddCart: {
     width: scale(20),
     height: verticalScale(20),

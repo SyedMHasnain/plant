@@ -1,19 +1,24 @@
 import { StyleSheet, Text, View ,TextInput} from 'react-native'
-import React from 'react'
-
+import React, {useContext} from 'react'
+import {Globalinfo} from '../../App';
 const Login = () => {
+
   return (
     <View>
       <View style={styles.textInput}>
         <TextInput
+       
           style={styles.input}
           placeholder="Email"
           placeholderTextColor={colors.Dgreen}
         />
       </View>
+
       <View style={styles.textInput}>
+
         <TextInput
           style={styles.input}
+          onChangeText={setPassword()}
           placeholder="Password"
           placeholderTextColor={colors.Dgreen}
         />

@@ -1,24 +1,28 @@
-import {View, Text, StyleSheet, TouchableOpacity,Image} from 'react-native';
-import React from 'react'
-import {colors, Icon, scale, verticalScale, popularData} from '../Imports/globalImports';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import React from 'react';
+import {
+  colors,
+  Icon,
+  scale,
+  verticalScale,
+  popularData,
+} from '../Imports/globalImports';
 import ItemDrawer from './ItemDrawer';
 
-
-const Flatlistitemdrawer = ({item, index ,}) => {
-
-    return (
-    
+const Flatlistitemdrawer = ({item, index}) => {
+  return (
     // Flatlist Start
     <TouchableOpacity
       activeOpacity={0.9}
       onPress={() => navigation.navigate('Detail', {item: item})}>
       <View style={styles.mainView}>
         <View style={styles.imgbgcolor}>
+          {/* items image  */}
           <Image style={[styles.img]} source={item.image} />
         </View>
-
         <View style={styles.DetailWrapper}>
           <View style={{flexDirection: 'row'}}>
+            {/* item title rating */}
             <Text
               style={{
                 fontFamily: 'Montserrat-Bold',
@@ -51,11 +55,9 @@ const Flatlistitemdrawer = ({item, index ,}) => {
       </View>
     </TouchableOpacity>
   );
-}
- 
-  
+};
 
-export default Flatlistitemdrawer
+export default Flatlistitemdrawer;
 
 const styles = StyleSheet.create({
   imgAddCart: {
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 10,
     borderRadius: 10,
-    marginBottom:10,
+    marginBottom: 10,
     backgroundColor: colors.white,
 
     shadowColor: '#000',
@@ -123,4 +125,3 @@ const styles = StyleSheet.create({
 
   Inches: {},
 });
-

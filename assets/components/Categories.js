@@ -8,23 +8,21 @@ import {
 import React, {useState} from 'react';
 import CatData from '../data/categories_data';
 import colors from '../theme/colors';
-import { scale, verticalScale } from 'react-native-size-matters';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 
 const categories = () => {
-  const [selected, setSelected] = useState(false);
+  //const [selected, setSelected] = useState(false);
 
   return (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       {CatData.map((item, index) => (
         <TouchableOpacity
           activeOpacity={0.7}
-        
           style={[
             styles.Listwrapper,
-              {
-             colors: item.selected ? colors.textDark : colors.Dgreen,
-
-              },
+            {
+              colors: item.selected ? colors.textDark : colors.Dgreen,
+            },
           ]}
           key={index}>
           <Text
@@ -48,13 +46,12 @@ const styles = StyleSheet.create({
   Listwrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 5,
-    padding: 7,
-    width: scale(70),
-    height: verticalScale(38),
+    margin: moderateScale(5),
+    padding: moderateScale(8),
+    // width: scale(78),
+    // height: verticalScale(38),
     borderRadius: 10,
     backgroundColor: colors.primary,
-
   },
   Text: {
     fontSize: 14,

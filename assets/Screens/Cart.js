@@ -3,30 +3,21 @@ import React, {useContext, useState} from 'react';
 import LottieView from 'lottie-react-native';
 import {Globalinfo} from '../../App';
 import {
-  Econ,
+ 
   colors,
   scale,
   verticalScale,
   moderateScale,
+  Icon
 } from '../Imports/globalImports';
 import Navbar, {Nav} from '../components/Navbar';
 
 const Cart = ({route}) => {
-  const {cartCount , setCartCount} = useContext(Globalinfo);
+  const {cartCount , setCartCount, api} = useContext(Globalinfo);
   const {item} = route.params;
- const [deleteItem, setDeleteitem] = useState(true)
 
- const remove_item = ()=> {
-  if (deleteItem) {
-      // If item is being deleted, decrease cart count
-      setCartCount(prevCount => prevCount  == 0);
-    } else {
-      // If item is being added back, increase cart count
-      setCartCount(prevCount => prevCount + 1);
-    }
-    // Toggle deleteItem state
-    // setDeleteitem(prevDelete => !prevDelete);
-  }
+ const removeitem = () =>
+   cartCount > 1 ? setCartCount(cartCount - 1) : setCartCount(0);
 
   return (
     <View style={styles.container}>
@@ -36,53 +27,40 @@ const Cart = ({route}) => {
 
       {/* If Items is not in cart */}
       {cartCount > 0 ? (
-        //  cartConmtainer
+        //  cartContainer
         <View style={styles.cartitemWrapper}>
           {/* Image */}
           <View style={styles.imgreapper}>
-            <Image source={item.image} style={styles.img} />
+            <Image source={item.image } style={styles.img} />
           </View>
           {/* TExt */}
           <View style={styles.title}>
             <Text style={styles.cartitemtxt}>{item.title}</Text>
-            <Text style={styles.cartitemtxt}>$ {item.price}</Text>
+            <Text style={styles.cartitemtxt}>$ { item.price * cartCount }</Text>
             <Text style={styles.cartitemtxt}>{item.sizeNumber}" Inches</Text>
+          </View>
 
-            {/* Quantiyty Counter
-        <View>
-          <Text style={styles.text}>Quantity</Text>
-          <View style={styles.cartQuantity}>
+          <View style={{marginLeft: moderateScale(68)}}>
+            {/* PLus */}
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => setCartCount(cartCount + 1)}
+              style={styles.AddCart}>
+              <Icon  name="add" size={20} color={colors.Dgreen} />
+            </TouchableOpacity>
+            {/* Counts  */}
+
+            <Text style={{color: colors.black, fontSize: 16 , marginLeft: moderateScale(5), marginTop:moderateScale(5)}}>
+            
+            {cartCount }
+            </Text>
+
+            {/* minus */}
             <TouchableOpacity
               activeOpacity={0.9}
               onPress={removeitem}
               style={styles.AddCart}>
-              <Icon name="remove" size={17} color={colors.white} />
-            </TouchableOpacity>
-            <Text style={{color: colors.black, fontSize: 19, marginTop: 8}}>
-              {cartCount}
-            </Text>
-
-            <View style={styles.counterWrapper}>
-              <TouchableOpacity
-                activeOpacity={0.9}
-                // onPress={() => setCartCount(cartCount + 1)}
-                style={styles.AddCart}>
-                <Icon name="add" size={17} color={colors.white} />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View> */}
-            {/* Quantiyty Counter */}
-          </View>
-
-          <View style={{marginLeft: moderateScale(68)}}>
-            <TouchableOpacity onPress={remove_item}>
-              <Econ
-                style={{}}
-                name="delete-outline"
-                size={28}
-                color={colors.primary}
-              />
+              <Icon name="remove" size={20} color={colors.Dgreen} />
             </TouchableOpacity>
           </View>
         </View>
@@ -118,14 +96,21 @@ export default Cart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
+  },
+  AddCart: {
+    width: scale(20),
+    height: verticalScale(20),
+    backgroundColor: colors.primary,
+    marginTop: 10,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   cartitemWrapper: {
-    margin: 10,
-    // backgroundColor: colors.primary,
+    margin: moderateScale(20),
+    backgroundColor: colors.white,
     flexDirection: 'row',
-    // borderRadius:20,
-    // borderWidth: 1,
+     borderRadius:20,
     height: verticalScale(100),
     width: scale(300),
   },
@@ -144,8 +129,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Bold',
     color: colors.catcolor,
   },
+  Plus: {
+    marginTop: moderateScale(15),
+  },
   cartitemtxt: {
-    fontSize: moderateScale(18),
+    fontSize: moderateScale(15),
     fontFamily: 'Montserrat-Regular',
     color: colors.black,
   },

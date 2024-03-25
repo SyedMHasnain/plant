@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "79388566864",
+    "project_id": "sapient-duality-406616",
+    "storage_bucket": "sapient-duality-406616.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79388566864:android:cb828cb5292898b2043855",
+        "android_client_info": {
+          "package_name": "com.plant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcsGZxyCBEzztjWV1bQOajTH6EWxQbL_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
