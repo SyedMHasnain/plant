@@ -13,7 +13,7 @@ const popularData = [
   },
   {
     id: '2',
-    image: require('../images/plant2.png'),
+    image: require('../images/plant3.png'),
     title: 'Rose',
     rating: '5.0',
     price: 12.99,
@@ -35,7 +35,7 @@ const popularData = [
   },
   {
     id: '4',
-    image: require('../images/plant4.png'),
+    image: require('../images/plant5.png'),
     title: 'Leaf Palm',
     rating: '5.0',
     price: 12.99,
@@ -46,8 +46,8 @@ const popularData = [
   },
   {
     id: '5',
-    image: require('../images/plant4.png'),
-    title: 'kaktus',
+    image: require('../images/plant6.png'),
+    title: 'Kaktus',
     rating: '5.0',
     price: 12.99,
     sizeNumber: 6,
@@ -55,7 +55,7 @@ const popularData = [
   },
   {
     id: '6',
-    image: require('../images/plant4.png'),
+    image: require('../images/plant7.png'),
     title: 'Money Plant ',
     rating: '5.0',
     price: 12.99,
@@ -66,7 +66,7 @@ const popularData = [
   },
 
   {
-    id: '7',
+    id: '2',
     image: require('../images/plant5.png'),
     title: 'Spider-Planta',
     rating: '5.0',
@@ -79,6 +79,5 @@ const popularData = [
 
   //
 ];
-
 
 export default popularData;

@@ -25,14 +25,28 @@ const CatData = [
     selected: false,
   },
   {
-    id: '3',
+    id: '4',
     image: require('../images/plant2.png'),
     title: 'Kari Patta',
     selected: false,
   },
   {
-    id: '4',
+    id: '5',
     image: require('../images/plant5.png'),
+    title: 'Delivery',
+    selected: false,
+  },
+  
+  {
+    id: '6',
+    image: require('../images/plant6.png'),
+    title: 'Delivery',
+    selected: false,
+  },
+  
+  {
+    id: '7',
+    image: require('../images/plant7.png'),
     title: 'Delivery',
     selected: false,
   },
