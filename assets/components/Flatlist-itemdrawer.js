@@ -11,7 +11,7 @@ import ItemDrawer from './ItemDrawer';
 
 const Flatlistitemdrawer = ({item, index}) => {
   return (
-    // Flatlist Start
+    // Flatlist components Start //
     <TouchableOpacity
       activeOpacity={0.9}
       onPress={() => navigation.navigate('Detail', {item: item})}>

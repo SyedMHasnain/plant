@@ -10,23 +10,33 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import {colors, Icon, Like, popularData} from '../Imports/globalImports';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 //import { Globalinfo } from '../../App';
-
+import globalapi from '../data/globalapi';
 const ItemDrawer = props => {
-  const [data, setData] = useState(undefined);
+  useEffect(() => {
+    getcatgory();
+  }, []);
 
-  const getApi = async () => {
-    const url = 'https://fakestoreapi.com/products'
-
-    let result = await fetch(url)
-
-    result = result.json()
-    setData(result)
-    console.warn("Hellow")
+  const getcatgory = () => {
+    globalapi.getCategory().then(res => {
+      console.log('res', res);
+    });
   };
 
-  useEffect(() => {
-    getApi(data);
-  }, []);
+  //const [data, setData] = useState(undefined);
+
+  // const getApi = async () => {
+  //   const url = 'https://fakestoreapi.com/products'
+
+  //   let result = await fetch(url)
+
+  //   result = result.json()
+  //   setData(result)
+  //   console.warn("Hellow")
+  // };
+
+  // useEffect(() => {
+  //   getApi(data);
+  // }, []);
 
   const {navigation} = props;
   // const [cartCount, setCartCount] = useState(0);
