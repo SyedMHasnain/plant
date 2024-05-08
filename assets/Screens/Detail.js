@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View, } from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Nav} from '../components/Navbar';
@@ -8,21 +8,25 @@ import {
   verticalScale,
   Animatable,
 } from '../Imports/globalImports';
-import { Globalinfo } from '../../App';
+import {Globalinfo} from '../../App';
 
 const Detail = ({navigation, route}) => {
+
   const {item} = route.params;
+  // const handeladdtocart =(item)=>{
+  //   addtocart(item);
+  //   navigation.navigate('Cart')
+  // }
 
-  const {cartCount ,setCartCount} = useContext(Globalinfo);
+  const {cartCount, setCartCount, addtocart, productdata} =
+    useContext(Globalinfo);
 
-  // const removeitem = () =>
-  //   cartCount > 1 ? setCartCount(cartCount - 1) : setCartCount(0);
-
-   const addcart = () => {
-        setCartCount(cartCount + 1)
-      navigation.navigate('Cart', {item: item});
-  
+  const handleaddcart = item => {
+    addtocart(item);
+    setCartCount(cartCount + 1);
+    navigation.navigate('Cart', {item});
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.nav}>
@@ -31,14 +35,14 @@ const Detail = ({navigation, route}) => {
       {/* Body */}
 
       <View style={styles.imagewrapper}>
-        <Image style={styles.img} source={item.image} />
+        <Image source={item.image} style={styles.img} />
       </View>
+      
       {/* Footer */}
 
       <View style={styles.FooterWrapper}>
         <View style={styles.DeatilWrapper}>
           <Text style={styles.Headingtext}>{item.title}</Text>
-
           <View>
             <Text style={styles.textdetail}>{item.details}</Text>
           </View>
@@ -52,12 +56,12 @@ const Detail = ({navigation, route}) => {
         </View>
         {/* PriceEnd  */}
       </View>
-      <Animatable.View animation="fadeInUp" delay={450}>
+      <Animatable.View animation="fadeInUp" delay={10}>
         <View style={styles.addcartbtn}>
           <TouchableOpacity
             activeOpactiy={0.7}
             style={styles.addtocart}
-            onPress={addcart}>
+            onPress={() => handleaddcart(item)}>
             <Text style={styles.text}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
@@ -69,6 +73,9 @@ const Detail = ({navigation, route}) => {
 export default Detail;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   textdetail: {
     color: colors.black,
     paddingTop: 10,
@@ -92,12 +99,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     margin: 10,
   },
-  container: {
-    flex: 1,
-  },
 
   img: {
-    width: scale(220),
+    width: scale(230),
     height: verticalScale(300),
   },
   Headingtext: {
@@ -134,7 +138,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 10,
   },
-  
+
   AddCart: {
     width: scale(20),
     height: verticalScale(20),

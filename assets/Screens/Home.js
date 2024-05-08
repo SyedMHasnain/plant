@@ -1,4 +1,4 @@
-import {StyleSheet, ScrollView, Text, View, Button} from 'react-native';
+import {StyleSheet, ScrollView, View} from 'react-native';
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Categories from '../components/Categories';
@@ -11,8 +11,7 @@ const Home = props => {
       <Navbar />
       <Categories />
       <View>
-        <ItemDrawer
-        awer navigation={props.navigation} route={props.route} />
+        <ItemDrawer navigation={props.navigation} route={props.route} />
       </View>
     </ScrollView>
   );

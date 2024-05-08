@@ -8,7 +8,7 @@ const CatData = [
 
   {
     id: '9',
-    image: require('../images/plant3.png'),
+    image: require('../images/plant02.png'),
     title: 'Kaktus',
     selected: true,
   },

@@ -5,13 +5,12 @@ import {
   Icon,
   scale,
   verticalScale,
-  popularData,
 } from '../Imports/globalImports';
-import ItemDrawer from './ItemDrawer';
+
 
 const Flatlistitemdrawer = ({item, index}) => {
   return (
-    // Flatlist components Start //
+    // Flatlist comp for Products Start //
     <TouchableOpacity
       activeOpacity={0.9}
       onPress={() => navigation.navigate('Detail', {item: item})}>
@@ -44,12 +43,7 @@ const Flatlistitemdrawer = ({item, index}) => {
 
           <View>
             <Text style={styles.text}>$ {item.price}</Text>
-            {/* <TouchableOpacity
-                        activeOpacity={0.9}
-                        onPress={plusitems}
-                        style={styles.imgAddCart}>
-                        <Icon name="add" size={17} color={colors.white} />
-                      </TouchableOpacity> */}
+          
           </View>
         </View>
       </View>

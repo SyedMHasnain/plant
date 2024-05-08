@@ -23,7 +23,7 @@ const Navbar = () => {
 };
 export default Navbar;
 
-const Nav = () => {
+const  Nav = () => {
   const navigation = useNavigation();
   return (
     
@@ -36,7 +36,7 @@ const Nav = () => {
           <Icon name="chevron-back" size={30} color={colors.black} />
         </TouchableOpacity>
 
-        <Icon name="heart" size={30} color="red" />
+     
       </View>
    
   );

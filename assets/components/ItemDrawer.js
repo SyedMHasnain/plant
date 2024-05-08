@@ -6,44 +6,13 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React from 'react';
 import {colors, Icon, Like, popularData} from '../Imports/globalImports';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
-//import { Globalinfo } from '../../App';
-import globalapi from '../data/globalapi';
+
 const ItemDrawer = props => {
-  useEffect(() => {
-    getcatgory();
-  }, []);
-
-  const getcatgory = () => {
-    globalapi.getCategory().then(res => {
-      console.log('res', res);
-    });
-  };
-
-  //const [data, setData] = useState(undefined);
-
-  // const getApi = async () => {
-  //   const url = 'https://fakestoreapi.com/products'
-
-  //   let result = await fetch(url)
-
-  //   result = result.json()
-  //   setData(result)
-  //   console.warn("Hellow")
-  // };
-
-  // useEffect(() => {
-  //   getApi(data);
-  // }, []);
 
   const {navigation} = props;
-  // const [cartCount, setCartCount] = useState(0);
-
-  let plusitems = () => {
-    setCartCount(cartCount + 1);
-  };
   return (
     <View>
       {/* Popular Heading */}
@@ -58,14 +27,15 @@ const ItemDrawer = props => {
         </Text>
         <Icon name="arrow-down-outline" size={10} color={colors.textDark} />
       </View>
+      {/* Popular Heading End*/}
       <View style={{flex: 1, flexWrap: 'wrap', flexDirection: 'row'}}>
-        {/* flatlist Items */}
+        {/* flatlist for Product*/}
         <FlatList
           numColumns={2}
           scrollEnabled={false}
           data={popularData}
           renderItem={({item, index}) => (
-            // Flatlist Start
+            
             <TouchableOpacity
               activeOpacity={1}
               onPress={() => navigation.navigate('Detail', {item: item})}>
@@ -97,12 +67,6 @@ const ItemDrawer = props => {
 
                   <View>
                     <Text style={styles.text}>$ {item.price}</Text>
-                    {/* <TouchableOpacity
-                        activeOpacity={0.9}
-                        onPress={plusitems}
-                        style={styles.imgAddCart}>
-                        <Icon name="add" size={17} color={colors.white} />
-                      </TouchableOpacity> */}
                   </View>
                 </View>
               </View>
@@ -181,5 +145,5 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Bold',
   },
 
-  Inches: {},
+ 
 });

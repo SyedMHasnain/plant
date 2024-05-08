@@ -1,14 +1,13 @@
 import {
   StyleSheet,
   Text,
-  View,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import CatData from '../data/categories_data';
 import colors from '../theme/colors';
-import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
+import {moderateScale, } from 'react-native-size-matters';
 
 const categories = () => {
   //const [selected, setSelected] = useState(false);
