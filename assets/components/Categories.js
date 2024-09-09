@@ -14,6 +14,7 @@ const categories = () => {
 
   return (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+{/* bar all ,kaktus, rose  */}
       {CatData.map((item, index) => (
         <TouchableOpacity
           activeOpacity={0.7}

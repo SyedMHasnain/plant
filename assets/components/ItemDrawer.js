@@ -28,7 +28,7 @@ const ItemDrawer = props => {
         <Icon name="arrow-down-outline" size={10} color={colors.textDark} />
       </View>
       {/* Popular Heading End*/}
-      <View style={{flex: 1, flexWrap: 'wrap', flexDirection: 'row'}}>
+      <View style={{ }}>
         {/* flatlist for Product*/}
         <FlatList
           numColumns={2}

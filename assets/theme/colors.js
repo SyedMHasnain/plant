@@ -4,7 +4,7 @@ const colors = {
   primary: '#D3B398',
   secondary: '#FFBB56',
   textLight: '#CDCDCD',
-  price: '#C8C8C8',
+  price: '#000',
   white: '#FFF',
   black: '#000',
   Dgreen: '#184A2C',

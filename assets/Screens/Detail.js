@@ -7,6 +7,7 @@ import {
   scale,
   verticalScale,
   Animatable,
+  moderateScale,
 } from '../Imports/globalImports';
 import {Globalinfo} from '../../App';
 
@@ -75,17 +76,20 @@ export default Detail;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.background, // Set a background color
   },
+  // Detail Text
   textdetail: {
     color: colors.black,
-    paddingTop: 10,
-    paddingLeft: 20,
+    paddingTop: verticalScale(10),
+    paddingLeft: moderateScale(20),
     fontFamily: 'Montserrat-Regular',
+    fontSize: moderateScale(14),
   },
   priceheading: {
     fontFamily: 'Montserrat-Regular',
     color: colors.black,
-    fontSize: 20,
+    fontSize: moderateScale(20),
   },
 
   imagewrapper: {
@@ -93,64 +97,47 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  iconhead: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    margin: 10,
-  },
-
+  // Image styling
   img: {
     width: scale(230),
     height: verticalScale(300),
+    resizeMode: 'contain', // Ensure the image scales without distortion
+    borderRadius: moderateScale(10), // Slight rounding for a modern look
   },
   Headingtext: {
     fontFamily: 'Montserrat-Bold',
     color: colors.black,
-    fontSize: 30,
-    paddingLeft: 15,
+    fontSize: moderateScale(30),
+    paddingLeft: moderateScale(15),
   },
 
+  // Price Section
   prices: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    margin: 20,
-    marginTop: 10,
+    paddingHorizontal: moderateScale(20),
+    marginVertical: verticalScale(10),
   },
   text: {
     fontFamily: 'Montserrat-SemiBold',
     color: colors.black,
-    fontSize: 20,
+    fontSize: moderateScale(20),
   },
-  cartQuantity: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: 10,
-    marginTop: 5,
-  },
-
+  // Add to Cart Button
   addtocart: {
     backgroundColor: '#99BC85',
-    padding: 10,
-    width: scale(280),
+    paddingVertical: verticalScale(12),
+    paddingHorizontal: scale(40), // Increased width for better visual balance
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
-    marginTop: 10,
+    borderRadius: moderateScale(20),
+    marginTop: verticalScale(10),
   },
-
-  AddCart: {
-    width: scale(20),
-    height: verticalScale(20),
-    backgroundColor: colors.BtnColor,
-    marginTop: 10,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  // Button container
   addcartbtn: {
-    marginBottom: 15,
+    marginBottom: verticalScale(15),
     justifyContent: 'center',
     alignItems: 'center',
   },
 });
+

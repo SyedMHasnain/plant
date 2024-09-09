@@ -1,15 +1,6 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Alert,
-  Button,
-} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {
   ALERT_TYPE,
-  Dialog,
   AlertNotificationRoot,
   Toast,
 } from 'react-native-alert-notification';
@@ -50,7 +41,6 @@ const Cart = ({route, navigation}) => {
         {/* If Items is not in cart */}
         {cartCount > 0 ? (
           //  cartContainer
-
           <View style={styles.cartitemWrapper}>
             {/* Image */}
             <View style={styles.imgreapper}>
@@ -78,7 +68,7 @@ const Cart = ({route, navigation}) => {
                 style={{
                   color: colors.black,
                   fontSize: 16,
-                  marginLeft: moderateScale(5),
+                  marginLeft: moderateScale(8),
                   marginTop: moderateScale(5),
                 }}>
                 {cartCount}
@@ -121,12 +111,6 @@ const Cart = ({route, navigation}) => {
       <AlertNotificationRoot>
         <TouchableOpacity
           activeOpactiy={0.7}
-          // onPress={() =>
-          // Dialog.show({
-          //   type: ALERT_TYPE.SUCCESS,
-          //   title: 'Success',
-          //   textBody: 'Congrats!Your Order Is Placed ',
-          //   button: 'close',})}
           onPress={() =>
             Toast.show({
               type: ALERT_TYPE.SUCCESS,
@@ -146,104 +130,80 @@ const Cart = ({route, navigation}) => {
 };
 
 export default Cart;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.background, // Set a background color
   },
-  // navbar
+  // Navbar styles
   iconhead: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 20,
   },
-  Header: {
-    paddingTop: 15,
-    marginHorizontal: 20,
+  // Cart Item Wrapper
+  cartitemWrapper: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    margin: moderateScale(20),
+    backgroundColor: colors.white, // Set a background color
+    borderRadius: 20,
+    padding: moderateScale(10),  // Added padding for better spacing
   },
-  HeaderTilteBack: {
-    flexDirection: 'row',
-    gap: 15,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-
-  TitleHeading: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: 25,
-    color: colors.textDark,
-  },
-  SubheadingWrapper: {
-    marginTop: 20,
-    paddingHorizontal: 20,
-    width: scale(210),
-    height: verticalScale(110),
-  },
-  Subheading: {
-    fontFamily: 'Montserrat-SemiBold',
-    color: colors.textDark,
-    fontSize: 28,
-  },
-  //nabvbar end
-
-  AddCart: {
-    width: scale(20),
-    height: verticalScale(20),
-    backgroundColor: colors.primary,
-    marginTop: 10,
-    borderRadius: 50,
+  // Image wrapper
+  imgreapper: {
+    flex: 1, // Take up equal space
     justifyContent: 'center',
     alignItems: 'center',
   },
+  img: {
+    width: scale(90),
+    height: verticalScale(100),
+    borderRadius: 10, 
+  },
+  // Title & Price Wrapper
+  title: {
+    flex: 2, // Take more space to accommodate text
+    justifyContent: 'space-between', // Space out text items
+    paddingLeft: moderateScale(10),
+  },
+  cartitemtxt: {
+    fontSize: moderateScale(16),
+    fontFamily: 'Montserrat-Regular',
+    color: colors.black,
+  },
+  // Plus/Minus Button Wrapper
+  controlWrapper: {
+    flex: 1, // Adjust according to content size
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column', // Align controls vertically
+  },
+  AddCart: {
+    width: scale(30), // Increase size for better tap target
+    height: verticalScale(30),
+    backgroundColor: colors.primary,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: moderateScale(5),
+  },
+  // CheckOut Button
   CheckOut: {
-    flex: 1,
     position: 'absolute',
     bottom: '6%',
     left: '8%',
     borderRadius: 10,
-    width: moderateScale(280),
-    height: verticalScale(30),
+    width: '85%', // Adjust width to fit different screen sizes
+    height: verticalScale(40), // Slightly larger button for better tap experience
     backgroundColor: '#99BC85',
     justifyContent: 'center',
     alignItems: 'center',
   },
   CheckOuttxt: {
     color: colors.textDark,
-    fontSize: 20,
+    fontSize: moderateScale(18), // Slightly smaller for consistency
     fontFamily: 'Montserrat-SemiBold',
   },
-  cartitemWrapper: {
-    margin: moderateScale(20),
-    backgroundColor: colors.white,
-    flexDirection: 'row',
-    borderRadius: 20,
-    height: verticalScale(100),
-    width: scale(300),
-  },
-  title: {
-    justifyContent: 'center',
-  },
-  img: {
-    backgroundColor: colors.primary,
-    borderRadius: 20,
-    width: scale(90),
-    height: verticalScale(100),
-    marginRight: 10,
-  },
-  Text: {
-    fontSize: moderateScale(20),
-    fontFamily: 'Montserrat-Bold',
-    color: colors.catcolor,
-  },
-  Plus: {
-    marginTop: moderateScale(15),
-  },
-  cartitemtxt: {
-    fontSize: moderateScale(15),
-    fontFamily: 'Montserrat-Regular',
-    color: colors.black,
-  },
 });
+
